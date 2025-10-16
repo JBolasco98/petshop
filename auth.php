@@ -331,10 +331,10 @@ $currentClass = $activeMode === 'signup' ? 'auth-shell is-signup' : 'auth-shell'
                                             <label for="signup_contact">Contact Number</label>
                                             <input type="text" id="signup_contact" name="contact_number" value="<?php echo htmlspecialchars($formValues['signup']['contact_number'], ENT_QUOTES, 'UTF-8'); ?>">
                                         </div>
-                                    </div>
-                                    <label for="signup_address">Address</label>
-                                    <textarea id="signup_address" name="address" rows="3"><?php echo htmlspecialchars($formValues['signup']['address'], ENT_QUOTES, 'UTF-8'); ?></textarea>
-                                    <div class="compact-row">
+                                        <div class="field-span-2">
+                                            <label for="signup_address">Address</label>
+                                            <textarea id="signup_address" name="address" rows="3"><?php echo htmlspecialchars($formValues['signup']['address'], ENT_QUOTES, 'UTF-8'); ?></textarea>
+                                        </div>
                                         <div>
                                             <label for="signup_role">Role</label>
                                             <select id="signup_role" name="role">

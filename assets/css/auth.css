@@ -331,6 +331,10 @@ button[type="submit"]:hover {
     gap: 8px;
 }
 
+.compact-row .field-span-2 {
+    grid-column: 1 / -1;
+}
+
 textarea {
     resize: vertical;
     min-height: 80px;

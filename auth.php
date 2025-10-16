@@ -233,6 +233,10 @@ $currentClass = $activeMode === 'signup' ? 'auth-shell is-signup' : 'auth-shell'
         <div class="auth-card">
             <div class="auth-layers">
                 <div class="auth-visual">
+                    <div class="auth-visual-art">
+                        <div class="visual-image visual-image-login <?php echo $activeMode === 'signup' ? '' : 'is-active'; ?>"></div>
+                        <div class="visual-image visual-image-signup <?php echo $activeMode === 'signup' ? 'is-active' : ''; ?>"></div>
+                    </div>
                     <div class="auth-visual-content">
                         <div class="visual-state visual-state-login <?php echo $activeMode === 'signup' ? '' : 'is-active'; ?>">
                             <h2>Welcome Back!</h2>

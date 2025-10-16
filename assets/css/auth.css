@@ -58,13 +58,13 @@ body {
 
 .auth-visual {
     left: 0;
-    background: linear-gradient(120deg, rgba(37, 99, 235, 0.75), rgba(30, 64, 175, 0.85)),
-        url('https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=1200&q=80') center/cover;
+    background: linear-gradient(120deg, rgba(37, 99, 235, 0.65), rgba(30, 64, 175, 0.7));
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     padding: 32px 40px;
     color: #fff;
+    overflow: hidden;
 }
 
 .auth-visual::after {
@@ -81,6 +81,8 @@ body {
     z-index: 1;
     max-width: 320px;
     min-height: 220px;
+    position: relative;
+    z-index: 2;
 }
 
 .visual-state {
@@ -136,6 +138,64 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.auth-visual-art {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.visual-image {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: saturate(1.05);
+    opacity: 0;
+    transform: scale(1.08);
+    transition: opacity 0.8s ease, transform 1.2s cubic-bezier(0.45, 0, 0.2, 1);
+}
+
+.visual-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.08) 0%, rgba(15, 23, 42, 0.45) 100%);
+}
+
+.visual-image.is-active {
+    opacity: 1;
+    transform: scale(1.01);
+}
+
+.visual-image-login {
+    background-image: url('https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?auto=format&fit=crop&w=1200&q=80');
+}
+
+.visual-image-signup {
+    background-image: url('https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?auto=format&fit=crop&w=1200&q=80');
+}
+
+.auth-shell:not(.is-signup) .visual-image-login {
+    opacity: 1;
+    transform: scale(1.01);
+}
+
+.auth-shell:not(.is-signup) .visual-image-signup {
+    opacity: 0;
+    transform: scale(1.08);
+}
+
+.auth-shell.is-signup .visual-image-login {
+    opacity: 0;
+    transform: scale(1.08);
+}
+
+.auth-shell.is-signup .visual-image-signup {
+    opacity: 1;
+    transform: scale(1.01);
 }
 
 .forms-wrapper {

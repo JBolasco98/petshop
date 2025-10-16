@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const signupForm = document.querySelector('.form-signup');
     const loginVisual = document.querySelector('.visual-state-login');
     const signupVisual = document.querySelector('.visual-state-signup');
+    const loginImage = document.querySelector('.visual-image-login');
+    const signupImage = document.querySelector('.visual-image-signup');
 
     const activateSignup = () => {
         shell.classList.add('is-signup');
@@ -17,6 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (signupForm) signupForm.classList.add('is-active');
         if (loginVisual) loginVisual.classList.remove('is-active');
         if (signupVisual) signupVisual.classList.add('is-active');
+        if (loginImage) loginImage.classList.remove('is-active');
+        if (signupImage) signupImage.classList.add('is-active');
     };
 
     const activateLogin = () => {
@@ -25,6 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (loginForm) loginForm.classList.add('is-active');
         if (signupVisual) signupVisual.classList.remove('is-active');
         if (loginVisual) loginVisual.classList.add('is-active');
+        if (signupImage) signupImage.classList.remove('is-active');
+        if (loginImage) loginImage.classList.add('is-active');
     };
 
     toSignupButtons.forEach((btn) => {
@@ -40,4 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
             activateLogin();
         });
     });
+
+    if (shell.classList.contains('is-signup')) {
+        activateSignup();
+    } else {
+        activateLogin();
+    }
 });

@@ -251,100 +251,119 @@ $currentClass = $activeMode === 'signup' ? 'auth-shell is-signup' : 'auth-shell'
                     <div class="forms-wrapper">
                         <form class="form form-login <?php echo $activeMode === 'login' ? 'is-active' : ''; ?>" method="post" action="<?php echo $action; ?>">
                             <input type="hidden" name="form_type" value="login">
-                            <h1>Log In</h1>
-                            <p>Enter your credentials to access the dashboard.</p>
+                            <div class="form-body">
+                                <h1>Log In</h1>
+                                <p>Enter your credentials to access the dashboard.</p>
 
-                            <?php if ($infoMessage): ?>
-                                <div class="alert alert-info"><?php echo htmlspecialchars($infoMessage, ENT_QUOTES, 'UTF-8'); ?></div>
-                            <?php endif; ?>
+                                <?php if ($infoMessage): ?>
+                                    <div class="alert alert-info"><?php echo htmlspecialchars($infoMessage, ENT_QUOTES, 'UTF-8'); ?></div>
+                                <?php endif; ?>
 
-                            <?php if ($loginErrors): ?>
-                                <div class="alert alert-error">
-                                    <ul class="validation-list">
-                                        <?php foreach ($loginErrors as $error): ?>
-                                            <li><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                </div>
-                            <?php endif; ?>
+                                <?php if ($loginErrors): ?>
+                                    <div class="alert alert-error">
+                                        <ul class="validation-list">
+                                            <?php foreach ($loginErrors as $error): ?>
+                                                <li><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    </div>
+                                <?php endif; ?>
 
-                            <label for="login_username">Username</label>
-                            <input type="text" id="login_username" name="username" value="<?php echo htmlspecialchars($formValues['login']['username'], ENT_QUOTES, 'UTF-8'); ?>" required>
+                                <label for="login_username">Username</label>
+                                <input type="text" id="login_username" name="username" value="<?php echo htmlspecialchars($formValues['login']['username'], ENT_QUOTES, 'UTF-8'); ?>" required>
 
-                            <label for="login_password">Password</label>
-                            <input type="password" id="login_password" name="password" required>
+                                <label for="login_password">Password</label>
+                                <input type="password" id="login_password" name="password" required>
+                            </div>
 
-                            <button type="submit">Log In</button>
-                            <div class="helper">Need an account? <a href="#" class="js-switch-to-signup">Sign up</a></div>
+                            <div class="form-actions">
+                                <button type="submit">Log In</button>
+                                <div class="helper">Need an account? <a href="#" class="js-switch-to-signup">Sign up</a></div>
+                            </div>
                         </form>
 
                         <form class="form form-signup <?php echo $activeMode === 'signup' ? 'is-active' : ''; ?>" method="post" action="<?php echo $action; ?>">
                             <input type="hidden" name="form_type" value="signup">
-                            <h1>Create Account</h1>
-                            <p>Fill out your details so we can get to know you better.</p>
+                            <div class="form-body">
+                                <h1>Create Account</h1>
+                                <p>Fill out your details so we can get to know you better.</p>
 
-                            <?php if ($signupErrors): ?>
-                                <div class="alert alert-error">
-                                    <ul class="validation-list">
-                                        <?php foreach ($signupErrors as $error): ?>
-                                            <li><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                </div>
-                            <?php endif; ?>
+                                <?php if ($signupErrors): ?>
+                                    <div class="alert alert-error">
+                                        <ul class="validation-list">
+                                            <?php foreach ($signupErrors as $error): ?>
+                                                <li><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    </div>
+                                <?php endif; ?>
 
-                            <div class="compact-row">
-                                <div>
-                                    <label for="signup_first_name">First Name*</label>
-                                    <input type="text" id="signup_first_name" name="first_name" value="<?php echo htmlspecialchars($formValues['signup']['first_name'], ENT_QUOTES, 'UTF-8'); ?>" required>
+                                <div class="form-section">
+                                    <h2 class="section-heading">Personal Details</h2>
+                                    <div class="compact-row">
+                                        <div>
+                                            <label for="signup_first_name">First Name*</label>
+                                            <input type="text" id="signup_first_name" name="first_name" value="<?php echo htmlspecialchars($formValues['signup']['first_name'], ENT_QUOTES, 'UTF-8'); ?>" required>
+                                        </div>
+                                        <div>
+                                            <label for="signup_middle_name">Middle Name</label>
+                                            <input type="text" id="signup_middle_name" name="middle_name" value="<?php echo htmlspecialchars($formValues['signup']['middle_name'], ENT_QUOTES, 'UTF-8'); ?>">
+                                        </div>
+                                        <div>
+                                            <label for="signup_last_name">Last Name*</label>
+                                            <input type="text" id="signup_last_name" name="last_name" value="<?php echo htmlspecialchars($formValues['signup']['last_name'], ENT_QUOTES, 'UTF-8'); ?>" required>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <label for="signup_middle_name">Middle Name</label>
-                                    <input type="text" id="signup_middle_name" name="middle_name" value="<?php echo htmlspecialchars($formValues['signup']['middle_name'], ENT_QUOTES, 'UTF-8'); ?>">
+
+                                <div class="form-section">
+                                    <h2 class="section-heading">Contact Information</h2>
+                                    <div class="compact-row">
+                                        <div>
+                                            <label for="signup_email">Email*</label>
+                                            <input type="email" id="signup_email" name="email" value="<?php echo htmlspecialchars($formValues['signup']['email'], ENT_QUOTES, 'UTF-8'); ?>" required>
+                                        </div>
+                                        <div>
+                                            <label for="signup_contact">Contact Number</label>
+                                            <input type="text" id="signup_contact" name="contact_number" value="<?php echo htmlspecialchars($formValues['signup']['contact_number'], ENT_QUOTES, 'UTF-8'); ?>">
+                                        </div>
+                                    </div>
+                                    <label for="signup_address">Address</label>
+                                    <textarea id="signup_address" name="address" rows="3"><?php echo htmlspecialchars($formValues['signup']['address'], ENT_QUOTES, 'UTF-8'); ?></textarea>
+                                    <div class="compact-row">
+                                        <div>
+                                            <label for="signup_role">Role</label>
+                                            <select id="signup_role" name="role">
+                                                <option value="customer" <?php echo $formValues['signup']['role'] === 'customer' ? 'selected' : ''; ?>>Customer</option>
+                                                <option value="owner" <?php echo $formValues['signup']['role'] === 'owner' ? 'selected' : ''; ?>>Pet Owner</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <label for="signup_last_name">Last Name*</label>
-                                    <input type="text" id="signup_last_name" name="last_name" value="<?php echo htmlspecialchars($formValues['signup']['last_name'], ENT_QUOTES, 'UTF-8'); ?>" required>
+
+                                <div class="form-section">
+                                    <h2 class="section-heading">Account Security</h2>
+                                    <div class="compact-row">
+                                        <div>
+                                            <label for="signup_username">Username*</label>
+                                            <input type="text" id="signup_username" name="username" value="<?php echo htmlspecialchars($formValues['signup']['username'], ENT_QUOTES, 'UTF-8'); ?>" required>
+                                        </div>
+                                        <div>
+                                            <label for="signup_password">Password*</label>
+                                            <input type="password" id="signup_password" name="password" required>
+                                        </div>
+                                        <div>
+                                            <label for="signup_confirm_password">Confirm*</label>
+                                            <input type="password" id="signup_confirm_password" name="confirm_password" required>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <label for="signup_email">Email*</label>
-                            <input type="email" id="signup_email" name="email" value="<?php echo htmlspecialchars($formValues['signup']['email'], ENT_QUOTES, 'UTF-8'); ?>" required>
-
-                            <label for="signup_address">Address</label>
-                            <textarea id="signup_address" name="address" rows="3"><?php echo htmlspecialchars($formValues['signup']['address'], ENT_QUOTES, 'UTF-8'); ?></textarea>
-
-                            <div class="compact-row">
-                                <div>
-                                    <label for="signup_contact">Contact Number</label>
-                                    <input type="text" id="signup_contact" name="contact_number" value="<?php echo htmlspecialchars($formValues['signup']['contact_number'], ENT_QUOTES, 'UTF-8'); ?>">
-                                </div>
-                                <div>
-                                    <label for="signup_role">Role</label>
-                                    <select id="signup_role" name="role">
-                                        <option value="customer" <?php echo $formValues['signup']['role'] === 'customer' ? 'selected' : ''; ?>>Customer</option>
-                                        <option value="owner" <?php echo $formValues['signup']['role'] === 'owner' ? 'selected' : ''; ?>>Pet Owner</option>
-                                    </select>
-                                </div>
+                            <div class="form-actions">
+                                <button type="submit">Sign Up</button>
+                                <div class="helper">Already registered? <a href="#" class="js-switch-to-login">Log in</a></div>
                             </div>
-
-                            <div class="compact-row">
-                                <div>
-                                    <label for="signup_username">Username*</label>
-                                    <input type="text" id="signup_username" name="username" value="<?php echo htmlspecialchars($formValues['signup']['username'], ENT_QUOTES, 'UTF-8'); ?>" required>
-                                </div>
-                                <div>
-                                    <label for="signup_password">Password*</label>
-                                    <input type="password" id="signup_password" name="password" required>
-                                </div>
-                                <div>
-                                    <label for="signup_confirm_password">Confirm*</label>
-                                    <input type="password" id="signup_confirm_password" name="confirm_password" required>
-                                </div>
-                            </div>
-
-                            <button type="submit">Sign Up</button>
-                            <div class="helper">Already registered? <a href="#" class="js-switch-to-login">Log in</a></div>
                         </form>
                     </div>
                 </div>
